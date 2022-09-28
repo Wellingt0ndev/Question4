@@ -5,9 +5,7 @@ public class Main {
 
         //Criando a matriz 10x10
         int[][] matriz = new int[10][10];
-        int[][] segMatriz = new int[4][4];
         int valor = 200;
-        int num;
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 matriz[i][j] = valor;
@@ -20,30 +18,36 @@ public class Main {
                 System.out.print(matriz[i][j] + " ");
             }
             System.out.println("");
+
         }
+        System.out.println();
+
 
         //Percorre a matriz 10 x 10 para encontrar os números primos
+        int contador = 0;
+        int index = 0;
+        int matrizNumber;
+        boolean primeNumberCheck;
+        int finalNumberSum;
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
-                if (ehPrimo(matriz[i][j])) {
-                    for (int k = 0; k < segMatriz.length; k++) {
-                        for (int l = 0; l < segMatriz[k].length; l++) {
-                            num = matriz[i][j]+i+j;
-                            segMatriz[k][l] = num;
+                index++;
+                matrizNumber = matriz[i][j];
+                primeNumberCheck = ehPrimo(matrizNumber);
+                if (primeNumberCheck == true) {
+                    finalNumberSum = (matrizNumber + index - 1);
+                    contador++;
+                    System.out.print(finalNumberSum + " ");
+                    if (contador == 4){
+                        System.out.println();
+                        contador = 0;
 
                         }
                     }
                 }
             }
         }
-        //Exibe a matriz de 4x4
-        for (int k = 0; k < segMatriz.length; k++) {
-            for (int l = 0; l < segMatriz[k].length; l++) {
-                System.out.print(segMatriz[k][l] + " ");
-            }
-            System.out.println("");
-        }
-    }
+
 
 //método para saber se o número é primo
     private static boolean ehPrimo(int numero) {
